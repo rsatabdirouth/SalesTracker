@@ -1,0 +1,17 @@
+﻿@model ProjectOnSalesTracker.Models.website
+@{
+    ViewBag.Title = "Addwebsite";
+}
+
+<h2>Addwebsite</h2>
+@using (Html.BeginForm("Addwebsite", "Tracker",FormMethod.Post))
+{
+    @Html.LabelFor(m=>m.ID)
+    @Html.TextBoxFor(m=>m.ID)
+
+
+    @Html.LabelFor(m=>m.WebsiteName)
+    @Html.TextBoxFor(m=>m.WebsiteName)
+    <input type="submit" value="AddWebsite"/>
+}
+

@@ -1,0 +1,17 @@
+﻿@model ProjectOnSalesTracker.Models.Source
+@{
+    ViewBag.Title = "AddSource";
+}
+
+<h2>AddSource</h2>
+@using (Html.BeginForm("AddSource", "Tracker",FormMethod.Post))
+{
+    @Html.LabelFor(m=>m.ID)
+    @Html.TextBoxFor(m=>m.ID)
+
+    @Html.LabelFor(m=>m.SourceName)
+    @Html.TextBoxFor(m=>m.SourceName)
+<input type="submit" value="AddSource" />
+}
+
+

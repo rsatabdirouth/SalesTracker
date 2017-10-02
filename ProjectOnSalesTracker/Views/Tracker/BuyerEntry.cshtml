@@ -1,0 +1,104 @@
+﻿@{
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+@model ProjectOnSalesTracker.Models.BuyerInfo
+
+<h2>BuyerEntry</h2>
+@{
+    var BestTimeToCall = new List<SelectListItem> {
+                                       new SelectListItem { Text = "Select", Value = "1", Selected = true },
+                                       new SelectListItem { Text = "Morning", Value = "2", Selected = true },
+                                       new SelectListItem { Text = "Afternoon", Value = "3", Selected = true },
+                                       new SelectListItem { Text = "Evening", Value = "4", Selected = true },
+                                       new SelectListItem { Text = "Anytime", Value = "5", Selected = true }};
+    ViewBag.BestTimeToCall = BestTimeToCall;
+}
+
+@using (Html.BeginForm("BuyerEntry", "Tracker", FormMethod.Post))
+{
+    <div class="container">
+
+        <div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.BuyerId)
+                @Html.TextBoxFor(m => m.BuyerId)
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.Date)
+                @Html.EditorFor(m => m.Date,new { id="Date"})
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.ContactName)
+                @Html.TextBoxFor(m => m.ContactName)
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.CompanyName)
+                @Html.TextBoxFor(m => m.CompanyName)
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m=>m.Source.SourceName)
+    
+
+
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.BuyerStatus)
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m=>m.Email)
+                @Html.TextBoxFor(m=>m.Email)
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+               @Html.LabelFor(m => m.ProductLookingFor)
+            @Html.DropDownListFor(m => m.Product.ProductName, ViewBag.BestTimeToCall as List<SelectListItem>, new { @class = "inputform2" })
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m=>m.AlternativePhone)
+                @Html.TextBoxFor(m=>m.AlternativePhone)
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m=>m.Mobile)
+                @Html.TextBoxFor(m=>m.Mobile)
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.Extension)
+                @Html.TextBoxFor(m => m.Extension)
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                @Html.LabelFor(m => m.SourceWebLlink)
+                @Html.TextBoxFor(m => m.SourceWebLlink)
+            </div>
+        </div>
+        <div>
+            @Html.LabelFor(m=>m.website)
+           
+        </div>
+        <div class="clearfix"></div>
+
+        <div><input type="submit" value="AddBuyer" /></div>
+        <div class="clearfix"></div>
+    </div>
+        <div class="clearfix"></div>
+
+}
+            <script>
+                $(function () {
+                    $("#Date").datepicker();
+
+                });
+            </script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+<script src="~/Scripts/jquery-ui-1.10.4.js"></script>
+

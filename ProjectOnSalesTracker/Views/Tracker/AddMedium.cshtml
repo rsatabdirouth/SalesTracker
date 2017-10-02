@@ -1,0 +1,19 @@
+﻿@model ProjectOnSalesTracker.Models.CommunicationMedium
+@{
+    ViewBag.Title = "AddMedium";
+}
+
+<h2>AddMedium</h2>
+@using (Html.BeginForm("AddMedium", "Tracker", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.mediumId)
+    @Html.TextBoxFor(m => m.mediumId)
+
+    @Html.LabelFor(m => m.medium)
+    @Html.TextBoxFor(m => m.medium)
+
+    <input type="submit" value="AddMedium" />
+}
+
+   
+

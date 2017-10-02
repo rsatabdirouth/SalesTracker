@@ -1,0 +1,17 @@
+﻿@model ProjectOnSalesTracker.Models.Product
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>AddProduct</h2>
+@using (Html.BeginForm("AddProduct", "Tracker", FormMethod.Post))
+{
+    @Html.LabelFor(m=>m.ID)
+    @Html.TextBoxFor(m=>m.ID)
+
+    @Html.LabelFor(m=>m.ProductName)
+    @Html.TextBoxFor(m=>m.ProductName);
+
+    <input type="submit" value="AddProduct" />
+}
+

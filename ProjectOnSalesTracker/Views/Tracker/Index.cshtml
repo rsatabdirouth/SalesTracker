@@ -1,0 +1,94 @@
+﻿
+@model ProjectOnSalesTracker.ViewModels.BuyerData
+<h2>Buyer Datas</h2>
+<div id="Container" style="height:350px; overflow:scroll;">
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>BuyerId</th>
+                <th>ContactName</th>
+                <th>Date</th>
+                <th>ProductLookingFor</th>
+                <th>CompanyName</th>
+            
+                <th>BuyerSource</th>
+                <th>BuyerStatus</th>
+                <th>Mobile</th>
+                <th>AlternativePhone</th>
+                <th>Email</th>
+                <th>Extension</th>
+                <th>SourceWebLlink</th>
+                <th>Website</th>
+               
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model.BuyerInfo)
+            {
+                <tr>
+                    <td>@v.BuyerId</td>
+                    <td>@v.ContactName</td>
+                    <td>@v.Date</td>
+                    <td>@v.Product.ProductName</td>
+                    <td>@v.CompanyName</td>
+                    <td>@v.Source.SourceName</td>
+                    <td>@v.Status.LeadStatus</td>
+                    <td>@v.Mobile</td>
+                    <td>@v.AlternativePhone</td>
+                    <td>@v.Email</td>
+                    <td>@v.Extension</td>
+                    <td>@v.SourceWebLlink</td>
+                    <td>@v.website.WebsiteName</td>
+                    
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<h4> Buyer Search </h4>
+@using (Html.BeginForm("Index", "Tracker", FormMethod.Post))
+{
+<table>
+    <tr>
+    <td>
+        <span>SearchByBuyer</span><br />
+        @Html.TextBox("ContactName")
+    </td>
+    <td>
+        <span>SearchByBuyerId</span><br />
+        @Html.TextBox("BuyerId")
+    </td>
+    </tr>
+
+    <tr>
+        <td>
+
+      <span>SearchByProduct</span><br/>
+            @Html.DropDownList("productid", Model.Product.Select(d => new SelectListItem() { Value = d.ID.ToString(), Text = d.ProductName }), "SearchProduct", new { @id = "productid" })
+
+
+        </td>
+        <td>
+     <span>SearchBySource</span><br/>
+ @Html.DropDownList("Sourceid",Model.Source.Select(d=>new SelectListItem() { Value=d.ID.ToString(),Text=d.SourceName}),"SearchSource",new { @id= "sourceid"})
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span>SearchBywebsite</span><br/>
+            @Html.DropDownList("Siteid",Model.website.Select(d=>new SelectListItem() { Value = d.ID.ToString(), Text = d.WebsiteName }),"SearchWebsite",new { @id="Siteid"})
+        </td>
+        <td>
+            <span>SearchByphone</span><br/>
+            @Html.TextBox("Mobile")
+        </td>
+    </tr>
+</table>
+
+    
+    
+
+<input type="submit" value="Search"/>
+}
